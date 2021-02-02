@@ -1,41 +1,41 @@
 //
 // Created by 王拓 on 2021/2/2.
 //
-#include <iostream>
-#include <vector>
-using namespace std;
-bool check(int x,int y,char c,vector<vector<char>>& grid){
-    for(int i = 0;i < 9;i++){
-        if(grid[x][i] == c) return false;
-        if(grid[i][y] == c) return false;
-        if(grid[(x/3)*3 + (i/3)][(y/3)*3 + (i % 3)] == c) return false;
-    }
-    return true;
-}
-bool back_track(vector<vector<char>>& grid,int i,int j){
-    if(i == 9) return true;
-    if(j == 9) return back_track(grid,i+1,0);
-    if(grid[i][j]!='.') return back_track(grid,i,j+1);
-    for(char ch = '1';ch <= '9';ch++){
-        if(!check(i,j,ch,grid)) continue;
-        grid[i][j] = ch;
-        if(back_track(grid,i,j+1)) return true;
-//        back_track(grid,i,j+1);
-        grid[i][j] = '.';
-    }
-    return false;
-}
-int main() {
-    vector<vector<char>> grid(9, vector<char>(9));
-    for (int i = 0; i < 9; i++) {
-        for (int j = 0; j < 9; j++) cin >> grid[i][j];
-    }
-    back_track(grid, 0, 0);
-    for (int i = 0; i < 9; i++) {
-        for (int j = 0; j < 9; j++) cout << grid[i][j];
-        cout << endl;
-    }
-}
+//#include <iostream>
+//#include <vector>
+//using namespace std;
+//bool check(int x,int y,char c,vector<vector<char>>& grid){
+//    for(int i = 0;i < 9;i++){
+//        if(grid[x][i] == c) return false;
+//        if(grid[i][y] == c) return false;
+//        if(grid[(x/3)*3 + (i/3)][(y/3)*3 + (i % 3)] == c) return false;
+//    }
+//    return true;
+//}
+//bool back_track(vector<vector<char>>& grid,int i,int j){
+//    if(i == 9) return true;
+//    if(j == 9) return back_track(grid,i+1,0);
+//    if(grid[i][j]!='.') return back_track(grid,i,j+1);
+//    for(char ch = '1';ch <= '9';ch++){
+//        if(!check(i,j,ch,grid)) continue;
+//        grid[i][j] = ch;
+//        if(back_track(grid,i,j+1)) return true;
+////        back_track(grid,i,j+1);
+//        grid[i][j] = '.';
+//    }
+//    return false;
+//}
+//int main() {
+//    vector<vector<char>> grid(9, vector<char>(9));
+//    for (int i = 0; i < 9; i++) {
+//        for (int j = 0; j < 9; j++) cin >> grid[i][j];
+//    }
+//    back_track(grid, 0, 0);
+//    for (int i = 0; i < 9; i++) {
+//        for (int j = 0; j < 9; j++) cout << grid[i][j];
+//        cout << endl;
+//    }
+//}
 /*
 #include <cstdio>
 #include <cstring>
